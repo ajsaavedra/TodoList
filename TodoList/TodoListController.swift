@@ -34,4 +34,14 @@ class TodoListController: UITableViewController, NSFetchedResultsControllerDeleg
         cell.textLabel?.text = item.text
         return cell
     }
+    
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        let item = fetchedResultsController.objectAtIndexPath(indexPath) as! NSManagedObject
+        managedObjectContext.deleteObject(item)
+        DataController.sharedInstance.saveContext()
+    }
+    
+    override func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
+        return .Delete
+    }
 }
