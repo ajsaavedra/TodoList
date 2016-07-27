@@ -11,7 +11,7 @@ import CoreData
 
 
 class Item: NSManagedObject {
-
+    static let identifier = "Item"
 // Insert code here to add functionality to your managed object subclass
 
 }

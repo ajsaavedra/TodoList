@@ -21,7 +21,7 @@ class ViewController: UIViewController {
 
     @IBAction func save(sender: AnyObject) {
         guard let text = textField.text else { return }
-        let item = NSEntityDescription.insertNewObjectForEntityForName("Item",
+        let item = NSEntityDescription.insertNewObjectForEntityForName(Item.identifier,
                     inManagedObjectContext: dataController.managedObjectContext) as! Item
         item.text = text
         dataController.saveContext()
