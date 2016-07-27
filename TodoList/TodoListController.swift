@@ -5,27 +5,14 @@ class TodoListController: UITableViewController, NSFetchedResultsControllerDeleg
 
     let managedObjectContext = DataController.sharedInstance.managedObjectContext
 
-    lazy var fetchRequest: NSFetchRequest = {
-        let request = NSFetchRequest(entityName: Item.identifier)
-        let sortDescriptor = NSSortDescriptor(key: "text", ascending: true)
-        request.sortDescriptors = [sortDescriptor]
-        return request
-    }()
-
-    lazy var fetchedResultsController: NSFetchedResultsController = {
-        let controller = NSFetchedResultsController(fetchRequest: self.fetchRequest, managedObjectContext: self.managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
-        controller.delegate = self
+    lazy var fetchedResultsController: TodoFetchedResultsController = {
+        let controller = TodoFetchedResultsController(managedObjectContext: self.managedObjectContext,
+                                                      withTableView: self.tableView)
         return controller
     }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        do {
-            try self.fetchedResultsController.performFetch()
-        } catch let error as NSError {
-            print("Error fetching Item objects: \(error.localizedDescription), \(error.userInfo)")
-        }
     }
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -46,9 +33,5 @@ class TodoListController: UITableViewController, NSFetchedResultsControllerDeleg
         let item = fetchedResultsController.objectAtIndexPath(indexPath) as! Item
         cell.textLabel?.text = item.text
         return cell
-    }
-
-    func controllerDidChangeContent(controller: NSFetchedResultsController) {
-        tableView.reloadData()
     }
 }
