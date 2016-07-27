@@ -51,7 +51,65 @@
             </objects>
             <point key="canvasLocation" x="2662" y="378"/>
         </scene>
-        <!--Todo List Controller-->
+        <!--Detail View Controller-->
+        <scene sceneID="4Ip-8s-TQ2">
+            <objects>
+                <viewController id="6N8-aC-xCR" customClass="DetailViewController" customModule="Todo_List" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="75P-ed-HEh"/>
+                        <viewControllerLayoutGuide type="bottom" id="hP0-F6-Occ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="D36-xj-hXX">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="w0o-vw-ubK">
+                                <rect key="frame" x="28" y="285" width="544" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vgi-Js-hnf">
+                                <rect key="frame" x="20" y="544" width="560" height="56"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="xto-o3-J9P"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Save"/>
+                                <connections>
+                                    <action selector="update:" destination="6N8-aC-xCR" eventType="touchUpInside" id="mxv-i8-nrf"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="Vgi-Js-hnf" firstAttribute="leading" secondItem="D36-xj-hXX" secondAttribute="leadingMargin" id="7uV-hN-cLt"/>
+                            <constraint firstItem="w0o-vw-ubK" firstAttribute="leading" secondItem="D36-xj-hXX" secondAttribute="leadingMargin" constant="8" id="8Kh-lO-4MK"/>
+                            <constraint firstItem="hP0-F6-Occ" firstAttribute="top" secondItem="Vgi-Js-hnf" secondAttribute="bottom" id="AoS-fF-nmC"/>
+                            <constraint firstItem="w0o-vw-ubK" firstAttribute="centerY" secondItem="D36-xj-hXX" secondAttribute="centerY" id="FTU-0B-w97"/>
+                            <constraint firstItem="w0o-vw-ubK" firstAttribute="centerX" secondItem="D36-xj-hXX" secondAttribute="centerX" id="JTV-Xy-KhJ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="w0o-vw-ubK" secondAttribute="trailing" constant="8" id="TDD-Zp-acr"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Vgi-Js-hnf" secondAttribute="trailing" id="rv5-Ua-STc"/>
+                        </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="cpe-aP-h3W" appends="YES" id="RLA-Vf-MDx"/>
+                        </connections>
+                    </view>
+                    <connections>
+                        <outlet property="textfield" destination="w0o-vw-ubK" id="ehw-8Q-w7h"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aqj-tC-PIj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="cpe-aP-h3W">
+                    <connections>
+                        <action selector="backgroundTapped:" destination="6N8-aC-xCR" id="sOQ-im-rXe"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="1290" y="1093"/>
+        </scene>
+        <!--Todo List-->
         <scene sceneID="KnU-0G-pHt">
             <objects>
                 <tableViewController id="iAK-Gs-BFX" customClass="TodoListController" customModule="Todo_List" customModuleProvider="target" sceneMemberID="viewController">
@@ -67,6 +125,9 @@
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="6N8-aC-xCR" kind="show" identifier="ShowItem" id="d6L-rr-RoP"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -74,7 +135,7 @@
                             <outlet property="delegate" destination="iAK-Gs-BFX" id="Hz0-FS-Cqb"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="sxs-YM-puv">
+                    <navigationItem key="navigationItem" title="Todo List" id="sxs-YM-puv">
                         <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="VUL-tB-HIU">
                             <connections>
                                 <segue destination="33w-WH-nyI" kind="presentation" id="6lB-DZ-3U1"/>
