@@ -1,14 +1,7 @@
-//
-//  ViewController.swift
-//  TodoList
-//
-//  Created by Tony Saavedra on 7/26/16.
-//  Copyright © 2016 Tony Saavedra. All rights reserved.
-//
-
 import UIKit
 
 class ViewController: UIViewController {
+    @IBOutlet var textField: UITextField!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +13,12 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    @IBAction func cancel(sender: AnyObject) {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
 
+    @IBAction func save(sender: AnyObject) {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
 }
 
