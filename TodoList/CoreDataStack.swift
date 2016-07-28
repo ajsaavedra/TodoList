@@ -4,7 +4,7 @@ import CoreData
 public class DataController: NSObject {
 
     static let sharedInstance = DataController()
-    
+
     private override init() {}
 
     private lazy var applicationDocumentsDirectory: NSURL = {

@@ -11,7 +11,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         guard let item = item else { fatalError("Cannot show detail without an item") }
         self.textfield.delegate = self
         textfield.text = item.text

@@ -21,7 +21,7 @@ class TodoFetchedResultsController: NSFetchedResultsController, NSFetchedResults
             print("Unresolved error: \(error), \(error.userInfo)")
         }
     }
-    
+
     func controllerWillChangeContent(controller: NSFetchedResultsController) {
         tableView.beginUpdates()
     }
@@ -29,7 +29,7 @@ class TodoFetchedResultsController: NSFetchedResultsController, NSFetchedResults
     func controllerDidChangeContent(controller: NSFetchedResultsController) {
         tableView.endUpdates()
     }
-    
+
     func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
         switch type {
         case .Insert:
